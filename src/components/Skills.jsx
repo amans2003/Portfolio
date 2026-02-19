@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { FaReact, FaNodeJs, FaGitAlt, FaDocker, FaFigma, FaLinux } from "react-icons/fa";
+import { FaReact, FaNodeJs, FaGitAlt, FaDocker, FaFigma, FaLinux, FaAirFreshener, FaBrain, FaDatabase } from "react-icons/fa";
 import {
   SiJavascript,
   SiTypescript,
@@ -18,6 +18,8 @@ import {
   SiStripe,
   SiNetlify,
   SiVercel,
+  SiSupabase,
+  SiUikit,
 } from "react-icons/si";
 import { TbApi } from "react-icons/tb";
 import { VscCode } from "react-icons/vsc";
@@ -53,7 +55,7 @@ function Skills({ setCursorVariant }) {
         { name: "MongoDB", level: 85, icon: SiMongodb },
         { name: "REST APIs", level: 90, icon: TbApi },
         { name: "Firebase", level: 80, icon: SiFirebase },
-        { name: "PostgreSQL", level: 65, icon: SiPostgresql },
+        { name: "SupaBase", level: 65, icon: SiSupabase },
       ],
     },
     {
@@ -65,9 +67,9 @@ function Skills({ setCursorVariant }) {
         { name: "Git & GitHub", level: 90, icon: FaGitAlt },
         { name: "VS Code", level: 95, icon: VscCode },
         { name: "Figma", level: 70, icon: FaFigma },
-        { name: "Docker", level: 60, icon: FaDocker },
+        { name: "OpenAI", level: 90, icon: FaBrain },
         { name: "Postman", level: 85, icon: SiPostman },
-        { name: "Linux", level: 75, icon: FaLinux },
+        { name: "Lottie", level: 75, icon: SiUikit },
       ],
     },
   ];

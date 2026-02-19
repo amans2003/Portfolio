@@ -60,7 +60,7 @@ function About() {
             >
               Greetings! I'm <span style={{ color: "#00fff5", fontWeight: "600" }}>Aman Singh</span>, a
               passionate Full Stack Developer currently working as a Software Developer at
-              <span style={{ color: "#8b5cf6", fontWeight: "600" }}> Holstein, Chandigarh</span>. My expertise
+              <span style={{ color: "#8b5cf6", fontWeight: "600" }}> Holstein</span>. My expertise
               lies in crafting modern, full-stack web applications using the MERN stack and cutting edge
               technologies.
             </p>
@@ -276,9 +276,9 @@ function About() {
           }}
         >
           {[
-            { number: "5+", label: "Projects Completed" },
-            { number: "1+", label: "Years Experience" },
-            { number: "10+", label: "Technologies" },
+            { number: "10+", label: "Projects Completed" },
+            { number: "2+", label: "Years Experience" },
+            { number: "15+", label: "Technologies" },
             { number: "100%", label: "Problem Solver" },
           ].map((stat, index) => (
             <motion.div

@@ -1,7 +1,11 @@
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedinIn, FaFacebookF, FaCodepen } from "react-icons/fa";
+import { FaGithub, FaLinkedinIn, FaFacebookF, FaCodepen,FaInstagram } from "react-icons/fa";
 import TypingText from "./TypingText";
 import profileImage from "../assets/ME.jpg";
+import { IoRocket } from "react-icons/io5";
+import { FaReact } from "react-icons/fa6";
+import { FaCode } from "react-icons/fa";
+
 
 function Hero() {
   const roles = [
@@ -14,8 +18,8 @@ function Hero() {
   const socialLinks = [
     { name: "GitHub", url: "https://github.com/amans2003", icon: FaGithub },
     { name: "LinkedIn", url: "https://www.linkedin.com/in/aman-singh-9a8233254/", icon: FaLinkedinIn },
-    { name: "Facebook", url: "", icon: FaFacebookF },
-    { name: "CodePen", url: "", icon: FaCodepen },
+    { name: "Instagram", url: "https://www.instagram.com/https.aman.sgh/", icon: FaInstagram }
+    
   ];
 
   return (
@@ -101,7 +105,7 @@ function Hero() {
               }}
             >
               I'm a skilled full-stack developer with expertise in the MERN stack. Currently working as a
-              Software Developer at Holstein, Chandigarh, I specialize in building modern web applications with React,
+              Software Developer at Holstein, I specialize in building modern web applications with React,
               Node.js, and interactive 3D experiences. I combine clean code with creative problem-solving to
               deliver high-quality results.
             </motion.p>
@@ -263,7 +267,7 @@ function Hero() {
                   fontSize: "24px",
                 }}
               >
-                ⚛️
+                <FaReact />
               </motion.div>
 
               <motion.div
@@ -284,7 +288,7 @@ function Hero() {
                   fontSize: "24px",
                 }}
               >
-                🚀
+                <IoRocket />
               </motion.div>
 
               <motion.div
@@ -305,7 +309,7 @@ function Hero() {
                   fontSize: "24px",
                 }}
               >
-                💻
+                <FaCode />
               </motion.div>
             </div>
           </motion.div>

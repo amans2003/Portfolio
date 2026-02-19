@@ -8,7 +8,7 @@ import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import Contact from "./components/Contact";
 import SideNav from "./components/SideNav";
-import Loader from "./components/Loader";
+import Loader from "./components/os/Loader";
 import CustomCursor from "./components/CustomCursor";
 
 function App() {

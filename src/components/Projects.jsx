@@ -45,79 +45,73 @@ function Projects() {
 
     const projects = [
         {
-            title: "Book Now",
-            subtitle: "Travel Booking Platform",
+            title: "PingMe",
+            subtitle: "Chat Application",
             description:
-                "A comprehensive travel booking platform with multi-role systems (User, Vendor, Admin), Stripe payment integration, and JWT authentication.",
+                "A real-time chat application with user authentication, message history, and responsive design.",
             features: [
-                "Multi-role authentication",
-                "Stripe payment integration",
-                "Real-time booking",
-                "Admin dashboard",
-                "JWT security",
-                "Modern UI",
+                "Real-time messaging",
+                "User authentication",
+                "Message history",
+                "Responsive design",
             ],
-            tech: ["React", "Node.js", "MongoDB", "Stripe", "JWT"],
+            tech: ["React", "Node.js", "MongoDB", "JWT"],
             github: "https://github.com/amans2003/PingMe_ChatApp",
             live: "https://pingme-chatapp-9dki.onrender.com/login",
-            image: "/assets/Ping.png",
+            image: "https://res.cloudinary.com/dhwqcdjip/image/upload/v1770991610/Ping_ayup6z.png",
             color: "#00fff5",
         },
         {
-            title: "Bocado",
-            subtitle: "Restaurant Website",
+            title: "Ecommerce Website",
+            subtitle: "Cattel Feed",
             description:
-                "Spanish tapas restaurant website featuring a complete reservation system using EmailJS, custom branding and elegant animations.",
+                "A full-stack e-commerce website with product listings, user authentication, and payment integration.",
             features: [
-                "Table reservation",
-                "EmailJS integration",
-                "Custom branding",
-                "Smooth animations",
-                "Interactive menu",
-                "Responsive design",
+                "Product listings",
+                "Shopping cart",
+                "Payment integration",
+                "Coupon system",
             ],
-            tech: ["React", "Vite", "EmailJS", "Tailwind CSS"],
-            github: "https://github.com/SarwarMorshad/bocado-berlin",
-            live: "https://bocadoberlin.de/",
-            image: "https://i.postimg.cc/P54q2g8W/bocado.png",
-            color: "#a7c957",
-        },
-        {
-            title: "Movie Matrix",
-            subtitle: "Movie Database App",
-            description:
-                "A feature-rich movie database application with Firebase authentication, CRUD operations, and advanced search filtering.",
-            features: [
-                "Firebase auth",
-                "CRUD operations",
-                "Search & filter",
-                "Movie ratings",
-                "Watchlist",
-                "TMDB API",
-            ],
-            tech: ["React", "Firebase", "Tailwind CSS", "TMDB API"],
-            github: "https://github.com/SarwarMorshad/movie-matrix-client",
-            live: "https://movie-matrix-bb82a.web.app/",
-            image: "https://i.postimg.cc/MGHztvwX/movie.png",
+
+            tech: ["React", "Firebase", "Node.js", "Tailwind CSS"],
+            github: "https://github.com/amans2003",
+            live: "https://github.com/amans2003",
+            image: "https://res.cloudinary.com/dhwqcdjip/image/upload/v1770994525/Screenshot_2026-02-13_at_8.15.21_PM_u8foe8.png",
             color: "#8b5cf6",
         },
         {
-            title: "Warm Paws",
-            subtitle: "Pet Adoption Platform",
+            title: "Task Managment",
+            subtitle: "Task Management App",
             description:
-                "A heartwarming pet adoption platform connecting loving homes with pets in need with user authentication and modern interface.",
+                "A comprehensive task management application with user authentication, task categorization, and real-time updates.",
             features: [
-                "Pet listings",
-                "Adoption system",
-                "User profiles",
-                "Search & filter",
-                "Favorites",
-                "Admin panel",
+                "User authentication",
+                "Task categorization",
+                "Real-time updates",
+                "Due dates & reminders",
             ],
-            tech: ["React", "Firebase", "Node.js", "MongoDB"],
-            github: "https://github.com/SarwarMorshad/warm-paws",
-            live: "https://warm-paws-932c4.web.app/",
-            image: "https://i.postimg.cc/Kv1rX55d/warmpaws.png",
+            tech: ["React", "Vite", "Firebase", "Tailwind CSS"],
+            github: "https://github.com/amans2003",
+            live: "https://github.com/amans2003",
+            image: "https://camo.githubusercontent.com/bc2ce4a0fee355819e9987d852f6cf0d30f2bf55cd28c50b896cd95ecdba5e79/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f646b793363707674662f696d6167652f75706c6f61642f76313731313939363631392f325f7876336c6a762e706e67",
+            color: "#a7c957",
+        },
+
+        {
+            title: "Voting App",
+            subtitle: "Online Voting System",
+            description:
+                "An online voting system that allows users to create polls, vote, and view results in real-time.",
+            features: [
+                "Poll creation",
+                "Real-time voting",
+                "Results visualization",
+                "User authentication",
+            ],
+            tech: ["React", "Express.js", "Node.js", "MongoDB"],
+            github: "https://github.com/amans2003",
+            live: "https://github.com/amans2003",
+            image: "https://res.cloudinary.com/dhwqcdjip/image/upload/v1771340298/Screenshot_2026-02-17_at_8.27.28_PM_oim5jt.png",
             color: "#00fff5",
         },
     ];
@@ -834,7 +828,7 @@ function Projects() {
                     }}
                 >
                     <a
-                        href="https://github.com/SarwarMorshad"
+                        href="https://github.com/amans2003"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="btn-secondary"

@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { FaGithub, FaLinkedinIn, FaFacebookF, FaCodepen } from "react-icons/fa";
+import { FaGithub, FaLinkedinIn, FaFacebookF, FaCodepen, FaInstagram } from "react-icons/fa";
 import { HiOutlineMail, HiOutlineLocationMarker } from "react-icons/hi";
 import { FiSend } from "react-icons/fi";
 import emailjs from "@emailjs/browser";
@@ -81,22 +81,21 @@ function Contact() {
   };
 
   const socialLinks = [
-    { name: "GitHub", url: "https://github.com/SarwarMorshad", icon: FaGithub },
-    { name: "LinkedIn", url: "https://www.linkedin.com/in/sarwarmorshad/", icon: FaLinkedinIn },
-    { name: "Facebook", url: "https://www.facebook.com/smorshad", icon: FaFacebookF },
-    { name: "CodePen", url: "https://codepen.io/Sarwar-Morshad", icon: FaCodepen },
+    { name: "GitHub", url: "https://github.com/amans2003", icon: FaGithub },
+    { name: "LinkedIn", url: "https://www.linkedin.com/in/aman-singh-9a8233254/", icon: FaLinkedinIn },
+    { name: "Instagram", url: "https://www.instagram.com/https.aman.sgh/", icon: FaInstagram },
   ];
 
   const contactInfo = [
     {
       label: "Email",
-      value: "dev.sarwarmorshad@gmail.com",
-      href: "mailto:dev.sarwarmorshad@gmail.com",
+      value: "amaninternsingh2003@gmail.com",
+      href: "amaninternsingh2003@gmail.com",
       icon: HiOutlineMail,
     },
     {
       label: "Location",
-      value: "Berlin, Germany",
+      value: "Chandigarh, Punjab",
       href: null,
       icon: HiOutlineLocationMarker,
     },
@@ -138,8 +137,8 @@ function Contact() {
               margin: "0 auto",
             }}
           >
-            I'm open for new opportunities – especially ambitious or large projects. Whether you have a
-            question or just want to say hi, I'll try my best to get back to you!
+            Have a project in mind or looking for a developer to bring your ideas to life? 
+Let’s connect and build something impactful together.
           </p>
         </motion.div>
 
@@ -389,17 +388,12 @@ function Contact() {
               </div>
             </div>
 
-            {/* Availability Card */}
+           
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.7 }}
-              style={{
-                background: "linear-gradient(145deg, rgba(0, 255, 245, 0.05), rgba(139, 92, 246, 0.05))",
-                border: "1px solid rgba(0, 255, 245, 0.2)",
-                borderRadius: "16px",
-                padding: "24px",
-              }}
+             
             >
               <div
                 style={{
@@ -409,7 +403,7 @@ function Contact() {
                   marginBottom: "12px",
                 }}
               >
-                <span
+                {/* <span
                   style={{
                     width: "10px",
                     height: "10px",
@@ -418,8 +412,8 @@ function Contact() {
                     boxShadow: "0 0 12px #4ade80",
                     animation: "pulse 2s ease-in-out infinite",
                   }}
-                />
-                <span
+                /> */}
+                {/* <span
                   style={{
                     color: "#4ade80",
                     fontWeight: "600",
@@ -427,7 +421,7 @@ function Contact() {
                   }}
                 >
                   Available for work
-                </span>
+                </span> */}
               </div>
               <p
                 style={{
@@ -436,7 +430,7 @@ function Contact() {
                   lineHeight: 1.6,
                 }}
               >
-                Currently looking for new opportunities. Let's build something amazing together!
+               
               </p>
             </motion.div>
           </motion.div>
@@ -460,7 +454,7 @@ function Contact() {
               fontSize: "14px",
             }}
           >
-            © {new Date().getFullYear()} Sarwar Morshad.
+            © {new Date().getFullYear()} Aman Singh.
           </p>
         </motion.div>
       </div>
