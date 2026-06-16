@@ -1,26 +1,53 @@
 "use client";
 
-/*
-  3-level orbit trick (must keep these three concerns on separate elements):
-    Level 1 – rotates (clockwise or CCW) around the center point
-    Level 2 – translates outward to the orbit radius (NO animation, just static transform)
-    Level 3 – counter-rotates so the badge text stays upright
-*/
+import {
+  SiReact, SiTypescript, SiNodedotjs, SiMongodb,
+  SiNextdotjs, SiPython, SiFirebase, SiDocker, SiSocketdotio,
+  SiTailwindcss, SiSupabase, SiExpress, SiJsonwebtokens, SiGooglegemini,
+} from "react-icons/si";
+import type { IconType } from "react-icons";
 
-type Ring = {
-  items: string[];
-  radius: number;
-  duration: number;
-  reverse?: boolean;
-};
+type OrbitItem = { name: string; Icon: IconType; color: string };
+type Ring = { items: OrbitItem[]; radius: number; duration: number; reverse?: boolean };
 
 const RINGS: Ring[] = [
-  { items: ["React", "TypeScript", "Node.js", "MongoDB"], radius: 88,  duration: 14 },
-  { items: ["Next.js", "Python", "Firebase", "Docker", "Socket.io"], radius: 138, duration: 24, reverse: true },
-  { items: ["Gemini API", "JWT Auth", "Tailwind", "Supabase", "Express.js", "React Native"], radius: 190, duration: 36 },
+  {
+    radius: 88,
+    duration: 14,
+    items: [
+      { name: "React",      Icon: SiReact,      color: "#61DAFB" },
+      { name: "TypeScript", Icon: SiTypescript,  color: "#3178C6" },
+      { name: "Node.js",    Icon: SiNodedotjs,   color: "#339933" },
+      { name: "MongoDB",    Icon: SiMongodb,     color: "#47A248" },
+    ],
+  },
+  {
+    radius: 142,
+    duration: 24,
+    reverse: true,
+    items: [
+      { name: "Next.js",    Icon: SiNextdotjs,   color: "#ffffff" },
+      { name: "Python",     Icon: SiPython,      color: "#3776AB" },
+      { name: "Firebase",   Icon: SiFirebase,    color: "#FFCA28" },
+      { name: "Docker",     Icon: SiDocker,      color: "#2496ED" },
+      { name: "Socket.io",  Icon: SiSocketdotio, color: "#ffffff" },
+    ],
+  },
+  {
+    radius: 198,
+    duration: 36,
+    items: [
+      { name: "Gemini API",  Icon: SiGooglegemini, color: "#8E75B2" },
+      { name: "Tailwind",    Icon: SiTailwindcss,  color: "#06B6D4" },
+      { name: "Supabase",    Icon: SiSupabase,     color: "#3ECF8E" },
+      { name: "Express.js",  Icon: SiExpress,      color: "#ffffff" },
+      { name: "JWT",         Icon: SiJsonwebtokens,color: "#D63AFF" },
+      { name: "React Native",Icon: SiReact,        color: "#61DAFB" },
+    ],
+  },
 ];
 
-const BADGE_H = 22; // px – half the badge height for vertical centering
+const ICON_BOX = 18; // half of icon container size, used for centering
 
 function OrbitRing({ ring }: { ring: Ring }) {
   const { items, radius, duration, reverse } = ring;
@@ -31,18 +58,19 @@ function OrbitRing({ ring }: { ring: Ring }) {
     <>
       {/* Dashed ring track */}
       <div
-        className="absolute top-1/2 left-1/2 rounded-full border border-dashed border-border/25 pointer-events-none"
+        className="absolute top-1/2 left-1/2 rounded-full border border-dashed border-border/20 pointer-events-none"
         style={{ width: radius * 2, height: radius * 2, marginLeft: -radius, marginTop: -radius }}
       />
 
       {items.map((item, i) => {
-        /* Stagger items evenly around the ring using animationDelay */
         const delay = `-${(duration / items.length) * i}s`;
+        const { Icon, color, name } = item;
 
         return (
           <div
-            key={item}
-            /* Level 1: zero-size anchor at center that ROTATES */
+            key={name}
+            title={name}
+            /* L1 – rotates around center */
             className="absolute top-1/2 left-1/2"
             style={{
               width: 0,
@@ -51,24 +79,27 @@ function OrbitRing({ ring }: { ring: Ring }) {
               animationDelay: delay,
             }}
           >
-            {/* Level 2: push outward to orbit radius – NO animation here */}
+            {/* L2 – translates to orbit radius, no animation */}
             <div
               style={{
                 position: "absolute",
-                left: radius,       // move right by radius
-                top: -BADGE_H,      // vertically center the badge
+                left: radius,
+                top: -ICON_BOX,
               }}
             >
-              {/* Level 3: counter-rotate so the badge text stays upright */}
+              {/* L3 – counter-rotates so icon stays upright */}
               <div
                 style={{
                   animation: reverse ? cwAnim : ccwAnim,
                   animationDelay: delay,
                 }}
               >
-                <span className="inline-flex items-center whitespace-nowrap rounded-full border border-border bg-background/85 backdrop-blur-sm px-2.5 py-1 text-[10px] font-mono font-medium text-foreground shadow-sm select-none">
-                  {item}
-                </span>
+                <div
+                  className="size-9 rounded-xl border border-border/60 bg-background/90 backdrop-blur-sm flex items-center justify-center shadow-md hover:scale-110 transition-transform cursor-default"
+                  style={{ boxShadow: `0 0 10px 0 ${color}22` }}
+                >
+                  <Icon style={{ color }} size={18} />
+                </div>
               </div>
             </div>
           </div>
@@ -80,18 +111,21 @@ function OrbitRing({ ring }: { ring: Ring }) {
 
 export function SkillsOrbit() {
   const maxR = Math.max(...RINGS.map((r) => r.radius));
-  const size = (maxR + 40) * 2;
+  const size = (maxR + 46) * 2;
 
   return (
     <div className="flex items-center justify-center w-full py-6 overflow-hidden">
-      <div className="relative flex-none" style={{ width: size, height: size, maxWidth: "min(100%, 480px)" }}>
+      <div
+        className="relative flex-none"
+        style={{ width: size, height: size, maxWidth: "min(100%, 500px)" }}
+      >
         {RINGS.map((ring) => (
           <OrbitRing key={ring.radius} ring={ring} />
         ))}
 
         {/* Center pulsing node */}
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-16 rounded-full border border-indigo-500/40 bg-background flex flex-col items-center justify-center gap-0.5 shadow-lg z-10"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-16 rounded-full border border-indigo-500/50 bg-background flex flex-col items-center justify-center gap-0.5 shadow-lg z-10"
           style={{ animation: "pulse-glow 3s ease-in-out infinite" }}
         >
           <span className="text-[8px] font-mono tracking-widest text-muted-foreground/60 uppercase leading-none">
@@ -100,12 +134,12 @@ export function SkillsOrbit() {
           <span className="text-sm font-bold text-foreground leading-none">Stack</span>
         </div>
 
-        {/* Radial fade at edges so it blends into the page background */}
+        {/* Radial fade at edges */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse at center, transparent 50%, var(--background) 80%)",
+              "radial-gradient(ellipse at center, transparent 48%, var(--background) 78%)",
           }}
         />
       </div>
