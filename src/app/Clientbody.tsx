@@ -6,6 +6,12 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Navbar } from "@/components/navbar";
 import { SideBento } from "@/components/side-bento";
 import ScrollToTop from "@/components/scrolltotop";
+import { useScrollSound } from "@/hooks/use-scroll-sound";
+
+function ScrollSoundProvider() {
+  useScrollSound();
+  return null;
+}
 
 export default function ClientBody({ children }: { children: React.ReactNode }) {
   return (
@@ -17,7 +23,7 @@ export default function ClientBody({ children }: { children: React.ReactNode }) 
     >
       <TooltipProvider delayDuration={0}>
         <div className="relative bg-background">
-          
+          <ScrollSoundProvider />
           <SideBento />
 
           <div className="relative max-w-5xl select-none mx-auto">
