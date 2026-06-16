@@ -37,32 +37,10 @@ function ProjectCard({
               onError={() => setImgErr(true)}
             />
           ) : (
-            <div
-              className="w-full h-full flex items-center justify-center relative"
-              style={{ background: (project as any).gradient ?? "var(--muted)" }}
-            >
-              {/* Subtle grid overlay */}
-              <div
-                className="absolute inset-0 opacity-10"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px)",
-                  backgroundSize: "28px 28px",
-                }}
-              />
-              {/* Accent glow */}
-              <div
-                className="absolute inset-0 opacity-20 blur-2xl"
-                style={{
-                  background: `radial-gradient(circle at 50% 60%, ${(project as any).accentColor ?? "#6366f1"} 0%, transparent 70%)`,
-                }}
-              />
-              {/* Icon */}
-              {(project as any).icon && (
-                <span className="relative text-5xl select-none drop-shadow-lg">
-                  {(project as any).icon}
-                </span>
-              )}
+            <div className="w-full h-full flex items-center justify-center bg-muted">
+              <span className="text-6xl font-black text-muted-foreground/10 select-none">
+                {project.title[0]}
+              </span>
             </div>
           )}
         </div>
