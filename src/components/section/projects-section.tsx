@@ -25,7 +25,7 @@ function ProjectCard({
       whileHover={{ y: -4, boxShadow: "0 20px 40px rgba(0,0,0,0.07)" }}
       transition={{ type: "spring", stiffness: 280, damping: 22 }}
     >
-      <div className="relative overflow-hidden bg-muted" style={{ paddingBottom: "52%" }}>
+      <div className="relative overflow-hidden" style={{ paddingBottom: "52%" }}>
         <div className="absolute inset-0">
           {project.video ? (
             <video src={project.video} autoPlay loop muted playsInline className="w-full h-full object-cover" />
@@ -37,12 +37,30 @@ function ProjectCard({
               onError={() => setImgErr(true)}
             />
           ) : (
-            <div className="w-full h-full flex items-center justify-center">
-              {(project as any).icon ? (
-                <span className="text-5xl select-none opacity-60">{(project as any).icon}</span>
-              ) : (
-                <span className="text-6xl font-black text-muted-foreground/10">
-                  {project.title[0]}
+            <div
+              className="w-full h-full flex items-center justify-center relative"
+              style={{ background: (project as any).gradient ?? "var(--muted)" }}
+            >
+              {/* Subtle grid overlay */}
+              <div
+                className="absolute inset-0 opacity-10"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px)",
+                  backgroundSize: "28px 28px",
+                }}
+              />
+              {/* Accent glow */}
+              <div
+                className="absolute inset-0 opacity-20 blur-2xl"
+                style={{
+                  background: `radial-gradient(circle at 50% 60%, ${(project as any).accentColor ?? "#6366f1"} 0%, transparent 70%)`,
+                }}
+              />
+              {/* Icon */}
+              {(project as any).icon && (
+                <span className="relative text-5xl select-none drop-shadow-lg">
+                  {(project as any).icon}
                 </span>
               )}
             </div>

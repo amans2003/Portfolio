@@ -132,7 +132,7 @@ export const DATA = {
       href: "https://iecuniversity.ac.in",
       degree: "Bachelor of Computer Applications (BCA) — Computer Science",
       cgpa: "7.2",
-      logoUrl: "https://iecuniversity.ac.in/images/logo.png",
+      logoUrl: "/iec-logo.png",
       start: "Sep 2022",
       end: "June 2025",
     },
@@ -152,21 +152,35 @@ export const DATA = {
   openSource: [
     {
       title: "MERN Projects Open Source Hub",
-      description: "Curated MERN starter projects for beginners — welcoming contributions and PRs.",
+      description: "A curated collection of beginner-friendly MERN projects — open for contributions, PRs, and collaboration from the developer community.",
       href: "https://github.com/amans2003/MERN-Projects-Open-Source",
       role: "Maintainer" as const,
+      logo: "https://avatars.githubusercontent.com/u/140417719?v=4",
+      stars: "1",
+    },
+    {
+      title: "DailyForge",
+      description: "Open-source MERN productivity app for designing weekly routines with drag-and-drop scheduling, conflict detection, and reusable task libraries.",
+      href: "https://github.com/amans2003/DailyForge",
+      role: "Maintainer" as const,
+      logo: "https://avatars.githubusercontent.com/u/140417719?v=4",
+      stars: "—",
     },
     {
       title: "first-contributions",
-      description: "Helped newcomers make their first open source contribution on GitHub.",
+      description: "Helped newcomers land their very first open source pull request — one of GitHub's most starred beginner repositories with 50k+ stars.",
       href: "https://github.com/firstcontributions/first-contributions",
       role: "Contributor" as const,
+      logo: "https://avatars.githubusercontent.com/u/65816235?v=4",
+      stars: "50k+",
     },
     {
       title: "React Projects for Beginners",
-      description: "Community repo to enhance React skills through collaborative open source practice.",
+      description: "A community-driven repository designed to help beginners sharpen their React skills through open source collaboration.",
       href: "https://github.com/WebDevSimplified/React-projects-for-beginners",
       role: "Contributor" as const,
+      logo: "https://avatars.githubusercontent.com/u/43813419?v=4",
+      stars: "500+",
     },
   ],
   projects: [
@@ -182,6 +196,8 @@ export const DATA = {
       image: "",
       video: "",
       icon: "🤖",
+      gradient: "linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%)",
+      accentColor: "#a78bfa",
     },
     {
       title: "Code Review AI Agent",
@@ -198,6 +214,8 @@ export const DATA = {
       image: "",
       video: "",
       icon: "🔍",
+      gradient: "linear-gradient(135deg, #0f0c29 0%, #1a1a2e 50%, #1e3a2f 100%)",
+      accentColor: "#34d399",
     },
     {
       title: "DailyForge",
@@ -214,6 +232,8 @@ export const DATA = {
       image: "",
       video: "",
       icon: "📅",
+      gradient: "linear-gradient(135deg, #2d1b69 0%, #11998e 100%)",
+      accentColor: "#fbbf24",
     },
     {
       title: "PingMe — Real-Time Chat",
@@ -227,6 +247,8 @@ export const DATA = {
       image: "",
       video: "",
       icon: "💬",
+      gradient: "linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%)",
+      accentColor: "#38bdf8",
     },
     {
       title: "PomoGoo",
@@ -243,6 +265,8 @@ export const DATA = {
       image: "",
       video: "",
       icon: "⏱️",
+      gradient: "linear-gradient(135deg, #3a0000 0%, #7f1d1d 50%, #991b1b 100%)",
+      accentColor: "#fb923c",
     },
   ],
   hackathons: [] as {

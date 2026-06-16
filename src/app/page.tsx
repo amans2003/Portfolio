@@ -16,6 +16,7 @@ import Image from "next/image";
 import { Fragment, useEffect, useState } from "react";
 import { SideDecorations } from "@/components/side-decoration";
 import Footer from "@/components/section/footer";
+import { SkillsOrbit } from "@/components/skills-orbit";
 
 function SectionWrapper({ children }: { children: React.ReactNode }) {
   return (
@@ -321,6 +322,14 @@ export default function Page() {
 
             <SeparatorPro variant="dots" className="w-full opacity-40" />
 
+            {/* Orbit visualization */}
+            <FadeIn delay={DELAY * 8.5}>
+              <SkillsOrbit />
+            </FadeIn>
+
+            <SeparatorPro variant="dots" className="w-full opacity-20" />
+
+            {/* Category breakdown */}
             <Stagger className="flex flex-col gap-5" staggerDelay={0.04}>
               {DATA.skillCategories.map((cat) => (
                 <StaggerItem key={cat.label}>
@@ -361,7 +370,7 @@ export default function Page() {
             <SeparatorPro variant="dots" className="w-full opacity-40" />
 
             <Stagger className="flex flex-col gap-0" staggerDelay={0.06}>
-              {DATA.openSource.map((item, index) => (
+              {DATA.openSource.map((item) => (
                 <StaggerItem key={item.title}>
                   <a
                     href={item.href}
@@ -370,9 +379,18 @@ export default function Page() {
                     className="group flex items-start justify-between gap-4 py-4 border-b border-border/50 last:border-0 hover:bg-muted/30 -mx-2 px-2 rounded-lg transition-colors"
                   >
                     <div className="flex items-start gap-3 min-w-0">
-                      <div className="size-7 rounded-lg border border-border bg-muted flex items-center justify-center shrink-0 mt-0.5 text-sm">
-                        {index === 0 ? "⭐" : "🤝"}
-                      </div>
+                      {(item as any).logo ? (
+                        /* eslint-disable-next-line @next/next/no-img-element */
+                        <img
+                          src={(item as any).logo}
+                          alt={item.title}
+                          className="size-9 rounded-lg border border-border object-cover shrink-0 mt-0.5"
+                        />
+                      ) : (
+                        <div className="size-9 rounded-lg border border-border bg-muted flex items-center justify-center shrink-0 mt-0.5 text-sm">
+                          {item.role === "Maintainer" ? "⭐" : "🤝"}
+                        </div>
+                      )}
                       <div className="min-w-0">
                         <div className="flex items-center gap-2 flex-wrap">
                           <span className="text-sm font-semibold text-foreground group-hover:underline underline-offset-4">
@@ -385,6 +403,11 @@ export default function Page() {
                           }`}>
                             {item.role}
                           </span>
+                          {(item as any).stars && (
+                            <span className="text-[9px] font-mono text-muted-foreground/50">
+                              ★ {(item as any).stars}
+                            </span>
+                          )}
                         </div>
                         <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">
                           {item.description}
