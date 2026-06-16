@@ -38,9 +38,13 @@ function ProjectCard({
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center">
-              <span className="text-6xl font-black text-muted-foreground/10">
-                {project.title[0]}
-              </span>
+              {(project as any).icon ? (
+                <span className="text-5xl select-none opacity-60">{(project as any).icon}</span>
+              ) : (
+                <span className="text-6xl font-black text-muted-foreground/10">
+                  {project.title[0]}
+                </span>
+              )}
             </div>
           )}
         </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "motion/react";
 import { FadeIn, Stagger, StaggerItem } from "@/components/fade-in";
 import { DATA } from "@/data/resume";
 import Link from "next/link";
@@ -96,7 +97,12 @@ const detailItems = [
 export default function Page() {
   return (
     <>
-      <main className="min-h-dvh flex flex-col gap-10 overflow-hidden">
+      <motion.main
+        className="min-h-dvh flex flex-col gap-10 overflow-hidden"
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      >
         <SideDecorations>
           <section id="hero">
             <div className="mx-auto pt-8 w-full max-w-2xl px-4 space-y-6">
@@ -275,13 +281,18 @@ export default function Page() {
                         )}
 
                         <div className="flex flex-col gap-0.5 min-w-0">
-                          <div className="font-semibold flex items-center gap-2 truncate">
+                          <div className="font-semibold flex items-center gap-2 flex-wrap">
                             {education.school}
                             <ArrowUpRight className="h-3.5 w-3.5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
                           </div>
                           <div className="text-sm text-muted-foreground truncate">
                             {education.degree}
                           </div>
+                          {(education as any).cgpa && (
+                            <span className="text-[10px] font-mono text-emerald-500 mt-0.5">
+                              CGPA {(education as any).cgpa}
+                            </span>
+                          )}
                         </div>
                       </div>
 
@@ -303,21 +314,30 @@ export default function Page() {
         <SeparatorPro variant="default" className="max-w-2xl mx-auto w-full px-4" />
 
         <section id="skills">
-          <div className="flex flex-col gap-y-4 max-w-2xl mx-auto px-4">
+          <div className="flex flex-col gap-y-6 max-w-2xl mx-auto px-4">
             <FadeIn delay={DELAY * 8}>
               <h2 className="text-xl font-bold">Skills</h2>
             </FadeIn>
 
             <SeparatorPro variant="dots" className="w-full opacity-40" />
 
-            <Stagger className="flex flex-wrap gap-2">
-              {DATA.skills.map((skill) => (
-                <StaggerItem key={skill.name}>
-                  <div className="border bg-background border-border rounded-xl h-8 px-4 flex items-center gap-2">
-                    {skill.icon && <skill.icon className="size-4" />}
-                    <span className="text-sm font-medium whitespace-nowrap">
-                      {skill.name}
+            <Stagger className="flex flex-col gap-5" staggerDelay={0.04}>
+              {DATA.skillCategories.map((cat) => (
+                <StaggerItem key={cat.label}>
+                  <div className="flex flex-col gap-2">
+                    <span className="text-[10px] font-mono tracking-[0.2em] uppercase text-muted-foreground/60">
+                      {cat.label}
                     </span>
+                    <div className="flex flex-wrap gap-1.5">
+                      {cat.items.map((item) => (
+                        <div
+                          key={item}
+                          className="border bg-background border-border rounded-lg h-7 px-3 flex items-center hover:border-foreground/30 transition-colors"
+                        >
+                          <span className="text-xs font-medium whitespace-nowrap">{item}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </StaggerItem>
               ))}
@@ -327,8 +347,62 @@ export default function Page() {
 
         <SeparatorPro variant="dots" className="max-w-2xl mx-auto w-full px-4" />
 
+        <section id="open-source">
+          <div className="flex flex-col gap-y-6 max-w-2xl mx-auto px-4">
+            <FadeIn delay={DELAY * 9}>
+              <div className="flex items-center gap-3">
+                <h2 className="text-xl font-bold">Open Source</h2>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full border border-emerald-500/40 text-emerald-500 bg-emerald-500/5">
+                  Contributor
+                </span>
+              </div>
+            </FadeIn>
+
+            <SeparatorPro variant="dots" className="w-full opacity-40" />
+
+            <Stagger className="flex flex-col gap-0" staggerDelay={0.06}>
+              {DATA.openSource.map((item, index) => (
+                <StaggerItem key={item.title}>
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-start justify-between gap-4 py-4 border-b border-border/50 last:border-0 hover:bg-muted/30 -mx-2 px-2 rounded-lg transition-colors"
+                  >
+                    <div className="flex items-start gap-3 min-w-0">
+                      <div className="size-7 rounded-lg border border-border bg-muted flex items-center justify-center shrink-0 mt-0.5 text-sm">
+                        {index === 0 ? "⭐" : "🤝"}
+                      </div>
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <span className="text-sm font-semibold text-foreground group-hover:underline underline-offset-4">
+                            {item.title}
+                          </span>
+                          <span className={`text-[9px] font-mono px-1.5 py-0.5 rounded-full border ${
+                            item.role === "Maintainer"
+                              ? "border-amber-500/40 text-amber-500 bg-amber-500/5"
+                              : "border-sky-500/40 text-sky-500 bg-sky-500/5"
+                          }`}>
+                            {item.role}
+                          </span>
+                        </div>
+                        <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">
+                          {item.description}
+                        </p>
+                      </div>
+                    </div>
+                    <ArrowUpRight className="size-3.5 text-muted-foreground/40 group-hover:text-foreground shrink-0 mt-1 transition-colors" />
+                  </a>
+                </StaggerItem>
+              ))}
+            </Stagger>
+          </div>
+        </section>
+
+        <SeparatorPro variant="dots" className="max-w-2xl mx-auto w-full px-4" />
+
         <section id="projects" className="max-w-2xl mx-auto w-full px-4">
-          <FadeIn delay={DELAY * 9}>
+          <FadeIn delay={DELAY * 10}>
             <ProjectsSection />
           </FadeIn>
         </section>
@@ -338,7 +412,7 @@ export default function Page() {
             <SeparatorPro variant="wave" className="max-w-2xl mx-auto w-full px-4" />
 
             <section id="hackathons" className="max-w-2xl mx-auto w-full px-4">
-              <FadeIn delay={DELAY * 10}>
+              <FadeIn delay={DELAY * 11}>
                 <HackathonsSection />
               </FadeIn>
             </section>
@@ -349,13 +423,13 @@ export default function Page() {
 
         <section id="contact">
           <SectionWrapper>
-            <FadeIn delay={DELAY * 11}>
+            <FadeIn delay={DELAY * 12}>
               <ContactSection />
             </FadeIn>
           </SectionWrapper>
         </section>
         <Footer />
-      </main>
+      </motion.main>
     </>
   );
 }
